@@ -9,7 +9,9 @@ define (require) ->
     RETINA_MODE = window.devicePixelRatio > 1
 
     getMaxBounds = (layer) ->
-        L.latLngBounds L.latLng(59.4, 23.8), L.latLng(61.5, 25.8)
+        # TODO Turku POC
+        # L.latLngBounds L.latLng(59.4, 23.8), L.latLng(61.5, 25.8)
+        L.latLngBounds L.latLng(49.4, 13.8), L.latLng(71.5, 35.8)
 
     wmtsPath = (style, language) ->
         stylePath =

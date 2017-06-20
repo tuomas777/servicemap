@@ -71,9 +71,13 @@ define (require) ->
 
         getShowButtonClasses: (showing, rootId) ->
             if showing
-                return "show-badge-button selected service-background-color-#{rootId}"
+                # TODO Turku POC
+                # return "show-badge-button selected service-background-color-#{rootId}"
+                return "show-badge-button selected service-background-color-1405"
             else
-                return "show-badge-button service-hover-background-color-light-#{rootId}"
+                # TODO Turku POC
+                # return "show-badge-button service-hover-background-color-light-#{rootId}"
+                return "show-badge-button service-hover-background-color-light-1405"
 
         toggleElement: ($targetElement) ->
             serviceId = $targetElement.closest('li').data('service-id')

@@ -16,7 +16,9 @@ define (require) ->
     # TODO: remove duplicates
     MARKER_POINT_VARIANT = false
     DEFAULT_CENTER =
-        helsinki: [60.171944, 24.941389]
+        # TODO Turku POC
+        # helsinki: [60.171944, 24.941389]
+        helsinki: [60.454510, 22.264824]
         espoo: [60.19792, 24.708885]
         vantaa: [60.309045, 25.004675]
         kauniainen: [60.21174, 24.729595]

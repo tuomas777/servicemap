@@ -1,5 +1,7 @@
 server_port: 9001
-service_map_backend: https://api.hel.fi/servicemap/v1
+# TODO Turku POC
+# service_map_backend: https://api.hel.fi/servicemap/v1
+service_map_backend: http://localhost:8000/v2
 street_address_languages:
     - fi
     - sv
@@ -8,12 +10,16 @@ supported_languages:
     - sv
     - en
 linkedevents_backend: https://api.hel.fi/linkedevents/v0.1
-otp_backend: https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql
+# TODO Turku POC
+# otp_backend: https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql
+otp_backend: https://api.digitransit.fi/routing/v1/routers/finland/index/graphql
 respa_backend: https://api.hel.fi/respa/v1
 static_path: /static/
 livereload: true
 url_prefix: /
 # user_location_override: [60.171111, 24.943889]
+# TODO Turku POC
+user_location_override: [60.454510, 22.264824]
 # sentry_url: http://4e10e9d3f27a440180a5e851a0228754@83.136.249.107/sentry/2
 debug_state: false
 mobile_ui_breakpoint: 768 # Mobile UI is used below this screen width.

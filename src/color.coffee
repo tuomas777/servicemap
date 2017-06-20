@@ -51,7 +51,9 @@ define (require) ->
         serviceColor: (service) ->
             @serviceRootIdColor service.get('root')
         serviceRootIdColor: (id) ->
-            [r, g, b] = @constructor.serviceColors[id]
+            # TODO Turku POC
+            # [r, g, b] = @constructor.serviceColors[id]
+            [r, g, b] = @constructor.serviceColors[1400]
             @constructor.rgb(r, g, b)
         unitColor: (unit) ->
             roots = unit.get('root_ontologytreenodes')
@@ -66,7 +68,9 @@ define (require) ->
                         s.get('root') == rid
             unless rootService?
                 rootService = roots[0]
-            [r, g, b] = @constructor.serviceColors[rootService]
+            # TODO Turku POC
+            # [r, g, b] = @constructor.serviceColors[rootService]
+            [r, g, b] = @constructor.serviceColors[1400]
             @constructor.rgb(r, g, b)
 
     return ColorMatcher

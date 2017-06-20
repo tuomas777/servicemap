@@ -564,9 +564,14 @@ define (require) ->
                     posList = models.PositionList.fromPosition @
                     @listenTo posList, 'sync', =>
                         bestMatch = posList.first()
-                        if bestMatch.get('distance') > 500
-                            bestMatch.set 'name', i18n.t 'map.unknown_address'
-                        @set bestMatch.toJSON()
+                        # TODO Turku POC
+                        # if bestMatch.get('distance') > 500
+                        #     bestMatch.set 'name', i18n.t 'map.unknown_address'
+                        # @set bestMatch.toJSON()
+                        if bestMatch?
+                            if bestMatch.get('distance') > 500
+                                bestMatch.set 'name', i18n.t 'map.unknown_address'
+                            @set bestMatch.toJSON()
                         deferred.resolve()
                         @trigger 'reverse-geocode'
         getSpecifierText: ->
