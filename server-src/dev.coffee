@@ -78,7 +78,7 @@ makeHandler = (template, options) ->
             staticFile: staticFileHelper
             pageMeta: req._context or {}
             siteName:
-                fi: 'Pääkaupunkiseudun palvelukartta'
+                fi: 'Turun palvelukartta POC'
                 sv: 'Servicekarta'
                 en: 'Service Map'
 
