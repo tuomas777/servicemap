@@ -40,6 +40,7 @@ define (require) ->
             sentences
 
     fetchAccessibilitySentences = (unit, callback) ->
+        return
         args =
             dataType: 'jsonp'
             url: BASE_URL + unit.id
