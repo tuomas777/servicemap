@@ -374,11 +374,11 @@ define (require) ->
                     cluster.on 'remove', (event) =>
                         @popups.removeLayer marker.popup
                 if not serviceNodes or serviceNodes.isEmpty()
-                    root = marker.unit.get('root_service_nodes')?[0] or 1400
+                    root = marker.unit.get('root_service_nodes')?[0] or appSettings.default_root_service_node_id
                 else
                     serviceNode = serviceNodes.find (s) =>
                         s.get('root') in marker.unit.get('root_service_nodes')
-                    root = serviceNode?.get('root') or 1400
+                    root = serviceNode?.get('root') or appSettings.default_root_service_node_id
                 serviceNodeIds[root] = true
             cluster.on 'remove', (event) =>
                 if cluster.popup?

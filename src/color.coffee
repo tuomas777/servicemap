@@ -20,7 +20,7 @@ define (require) ->
                 Raven.captureMessage(
                     'No roots found for unit ' + unit.id,
                     tags: type: 'helfi_rest_api_v4')
-                roots = [1400]
+                roots = [appSettings.default_root_service_node_id]
             if @selectedServiceNodes?
                 rootServiceNode = _.find roots, (rid) =>
                     @selectedServiceNodes.find (s) ->
