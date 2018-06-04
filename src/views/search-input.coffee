@@ -92,13 +92,6 @@ define (require) ->
                 displayKey: (c) -> c.name[p13n.getLanguage()]
                 templates:
                     suggestion: (ctx) -> jade.template 'typeahead-suggestion', ctx
-            eventDataset =
-                name: 'event'
-                source: search.linkedeventsEngine.ttAdapter(),
-                displayKey: (c) -> c.name[p13n.getLanguage()]
-                templates:
-                    suggestion: (ctx) -> jade.template 'typeahead-suggestion', ctx
-
 
             # A hack needed to ensure the header is always rendered.
             fullDataset =
@@ -111,11 +104,22 @@ define (require) ->
                     suggestion: (s) -> jade.template 'typeahead-fulltext', s
 
             @geocoderBackend = new geocoding.GeocoderSourceBackend()
-            @$searchEl.typeahead hint: false, [
+
+            datasets = [
                 fullDataset,
                 @geocoderBackend.getDatasetOptions(),
-                serviceNodeDataset,
-                eventDataset]
+                serviceNodeDataset]
+
+            if search.linkedeventsEngine
+                datasets.push
+                    name: 'event'
+                    source: search.linkedeventsEngine.ttAdapter(),
+                    displayKey: (c) -> c.name[p13n.getLanguage()]
+                    templates:
+                        suggestion: (ctx) -> jade.template 'typeahead-suggestion', ctx
+
+            @$searchEl.typeahead hint: false, datasets
+
             @geocoderBackend.setOptions
                 $inputEl: @$searchEl
                 selectionCallback: (ev, data) ->

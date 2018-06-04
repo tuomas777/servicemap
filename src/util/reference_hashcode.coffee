@@ -30,6 +30,8 @@ define (require) ->
     AND_OPERATOR = '*'
 
     normalize = (reference) ->
+        if reference == null
+            reference = ""
         orOperands = reference.split OR_OPERATOR
         parsed = _.map orOperands, (o) =>
             andOperands = _.map o.split(AND_OPERATOR), (x) => parseInt(x)

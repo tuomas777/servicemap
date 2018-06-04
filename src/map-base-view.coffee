@@ -15,11 +15,11 @@ define (require) ->
 
     # TODO: remove duplicates
     MARKER_POINT_VARIANT = false
-    DEFAULT_CENTER =
-        helsinki: [60.171944, 24.941389]
-        espoo: [60.19792, 24.708885]
-        vantaa: [60.309045, 25.004675]
-        kauniainen: [60.21174, 24.729595]
+
+    DEFAULT_CENTER = {}
+    for city in appSettings.cities
+        DEFAULT_CENTER[city.name] = city.location
+
     ICON_SIZE = 40
 
     if getIeVersion() and getIeVersion() < 9
@@ -88,7 +88,7 @@ define (require) ->
         calculateInitialOptions: ->
             city = p13n.getCity()
             unless city?
-                city = 'helsinki'
+                city = appSettings.cities[0].name
             center = DEFAULT_CENTER[city]
             # Default state without selections
             defaults =
@@ -374,11 +374,11 @@ define (require) ->
                     cluster.on 'remove', (event) =>
                         @popups.removeLayer marker.popup
                 if not serviceNodes or serviceNodes.isEmpty()
-                    root = marker.unit.get('root_service_nodes')?[0] or 1400
+                    root = marker.unit.get('root_service_nodes')?[0] or appSettings.default_root_service_node_id
                 else
                     serviceNode = serviceNodes.find (s) =>
                         s.get('root') in marker.unit.get('root_service_nodes')
-                    root = serviceNode?.get('root') or 1400
+                    root = serviceNode?.get('root') or appSettings.default_root_service_node_id
                 serviceNodeIds[root] = true
             cluster.on 'remove', (event) =>
                 if cluster.popup?
