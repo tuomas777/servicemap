@@ -77,10 +77,7 @@ makeHandler = (template, options) ->
             config: config
             staticFile: staticFileHelper
             pageMeta: req._context or {}
-            siteName:
-                fi: 'Pääkaupunkiseudun palvelukartta'
-                sv: 'Servicekarta'
-                en: 'Service Map'
+            siteName: config.site_name
 
         res.render template, vars
 
